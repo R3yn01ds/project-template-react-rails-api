@@ -25,21 +25,56 @@
 // export default App;
 
 import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
   }, []);
 
+  if (!user) return <Login onLogin={setUser} />;
+
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
-    </div>
+    <>
+      <NavBar user={user} setUser={setUser} />
+      <main>
+        <Switch>
+          <Route path="/new">
+            {/* <NewRecipe user={user} /> */}
+          </Route>
+          <Route path="/">
+            {/* <RecipeList /> */}
+          </Route>
+        </Switch>
+      </main>
+    </>
   );
 }
 
 export default App;
+
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(() => {
+//     fetch("/hello")
+//       .then((r) => r.json())
+//       .then((data) => setCount(data.count));
+//   }, []);
+
+//   return (
+//     <div className="App">
+//       <h1>Page Count: {count}</h1>
+//     </div>
+//   );
+// }
+
+// export default App;
