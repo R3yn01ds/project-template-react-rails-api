@@ -21,7 +21,11 @@ Player2 = Player.create(name: "Lamar Jackson", number: "8")
 Player1 = Player.create(name: "Joe Burrow", number: "9")
 Player1 = Player.create(name: "Jacoby Brissett", number: "7")
 
-game1 = Game.create(name: "Host Team", name: "Guest Team", )
+game1 = Game.create(name: "Host Team", name: "Guest Team", number: "Host_Team_Score", number: "Guest_Team_Score")
+game2 = Game.create(name: "Host Team", name: "Guest Team", number: "Host_Team_Score", number: "Guest_Team_Score")
+game3 = Game.create(name: "Host Team", name: "Guest Team", number: "Host_Team_Score", number: "Guest_Team_Score")
+game4 = Game.create(name: "Host Team", name: "Guest Team", number: "Host_Team_Score", number: "Guest_Team_Score")
+
 
 
 
